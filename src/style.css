@@ -1,0 +1,22 @@
+ul {
+  padding: 0;
+}
+
+.todo {
+  margin-top: 2rem;
+}
+
+.todo {
+  padding: 2rem;
+  max-width: 600px;
+  background-color: #eeeeee;
+}
+
+.todo__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo--done {
+  text-decoration: line-through;
+}
