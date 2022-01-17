@@ -1,9 +1,10 @@
 import { useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { todoReducer } from "./features/reducers";
+import { todoReducer } from "./features/reducers/todoReducer";
 import { TodoContext } from "./features/contexts";
 import { Header } from "./components";
 import { Contact, Home } from "./pages";
+import Tutorials from "./components/Tutorials";
 
 interface IProps {}
 
@@ -17,6 +18,7 @@ const App: React.FC<IProps> = (props) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/tutorials" element={<Tutorials />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>

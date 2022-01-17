@@ -5,11 +5,13 @@ interface IProps {}
 
 const Contact: React.FC<IProps> = (props) => {
   const [state, dispatch] = useReducer(formReducer, {});
+  // console.log(Object.values(state));
 
-  console.log(Object.values(state));
+  console.log(state["email"] ?? "");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
+
     dispatch({ name, value });
   };
 
@@ -26,7 +28,7 @@ const Contact: React.FC<IProps> = (props) => {
         </div>
         <div className="form__group">
           <label htmlFor="message">Message</label>
-          <textarea name="message" id="message"></textarea>
+          <textarea name="message" id="message" onChange={handleChange}></textarea>
         </div>
       </form>
     </main>

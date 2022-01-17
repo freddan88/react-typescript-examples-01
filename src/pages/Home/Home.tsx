@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { TodoContext } from "../../features/contexts";
-import { TState, IAction } from "../../features/reducers";
+import { TState, IAction } from "../../features/reducers/todoReducer";
 
 interface IProps {}
 
@@ -54,12 +54,7 @@ const Home: React.FC<IProps> = (props) => {
     <main className="app-home">
       <form onSubmit={addTodo}>
         <label htmlFor="add-todo">Todo: </label>
-        <input
-          id="add-todo"
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
+        <input id="add-todo" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
         <button type="submit">Add Todo</button>
       </form>
       <ul>{renderTodos()}</ul>
