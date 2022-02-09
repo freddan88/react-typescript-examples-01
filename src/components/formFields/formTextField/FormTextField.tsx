@@ -1,17 +1,9 @@
 import { useState } from "react";
 import { getAutoCompleteValue, getFormFieldStyles, renderLabel } from "../formFieldHelpers";
+import { ITextFieldProps } from "../formFieldInterfaces";
 import { getValidationMessage } from "../formFieldValidation";
 
-interface IProps {
-  autocomplete?: boolean;
-  required?: boolean;
-  label?: string;
-  name: string;
-  minlength?: number;
-  maxlength?: number;
-}
-
-const FormTextField: React.FC<IProps> = (props) => {
+const FormTextField: React.FC<ITextFieldProps> = (props) => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
