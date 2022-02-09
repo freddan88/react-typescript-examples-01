@@ -5,6 +5,7 @@ import { TodoContext } from "./features/contexts";
 import { Header } from "./components";
 import { Contact, Home, FormInputs, MountMulti } from "./pages";
 import Tutorials from "./components/Tutorials";
+import InputPage from "./pages/InputPage";
 
 interface IProps {}
 
@@ -21,6 +22,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/tutorials" element={<Tutorials />} />
           <Route path="/form-inputs" element={<FormInputs />} />
           <Route path="/multi" element={<MountMulti />} />
+          <Route path="/input" element={<InputPage />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>
