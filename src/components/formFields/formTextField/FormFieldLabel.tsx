@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface IProps {
   name: string;
   label?: string;
@@ -5,7 +7,10 @@ interface IProps {
 }
 
 const FormFieldLabel: React.FC<IProps> = (props) => {
+  const [name, setName] = useState("");
   if (!props.label) return null;
+
+  const isActive = true;
 
   return (
     <label htmlFor={props.name}>

@@ -1,8 +1,8 @@
-import { useState, ReactNode, cloneElement } from "react";
-import { last } from "lodash";
+import { useState, ReactNode, cloneElement, useRef, useEffect } from "react";
+import { last, isEmpty } from "lodash";
 
 interface IProps {
-  children: JSX.Element & ReactNode;
+  children: JSX.Element & ReactNode & any;
 }
 
 const outputStyles = {
@@ -18,6 +18,11 @@ interface IState {
 
 const FormFieldMulti: React.FC<IProps> = (props) => {
   const [inputs, setInputs] = useState<IState[]>([{ id: 1, value: "" }]);
+  const [error, setError] = useState<string>("");
+
+  const getChildErrors = (error: string) => {
+    setError(error);
+  };
 
   const appendInputs = () => {
     const prev = last(inputs);
@@ -53,7 +58,7 @@ const FormFieldMulti: React.FC<IProps> = (props) => {
 
   const renderChildren = () => {
     return inputs.map((input) => {
-      const clonedElement = cloneElement(props.children, { value: input.value, id: input.id });
+      const clonedElement = cloneElement(props.children, { value: input.value, id: input.id, errors: getChildErrors });
       return (
         <div key={input.id} style={outputStyles}>
           {clonedElement}
@@ -63,7 +68,12 @@ const FormFieldMulti: React.FC<IProps> = (props) => {
     });
   };
 
-  return <div>{renderChildren()}</div>;
+  return (
+    <div>
+      <label style={{ color: error ? "red" : "black" }}>Multi</label>
+      {renderChildren()}
+    </div>
+  );
 };
 
 export default FormFieldMulti;

@@ -5,6 +5,7 @@ interface IBaseProps {
 }
 
 export interface ITextFieldProps extends IBaseProps {
+  errors?: (data: { id: number; error: string }) => void;
   autocomplete?: boolean;
   minlength?: number;
   maxlength?: number;

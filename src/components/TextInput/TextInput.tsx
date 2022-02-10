@@ -6,6 +6,8 @@ interface IProps {
   name: string;
   label?: string;
   value?: string;
+  error?: string;
+  errors?: (error: string) => void;
 }
 
 const TextInput: React.FC<IProps> = (props) => {
@@ -13,8 +15,14 @@ const TextInput: React.FC<IProps> = (props) => {
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    console.log(error);
+    if (props.errors && typeof props.errors === "function") {
+      props.errors(error);
+    }
   }, [error]);
+
+  useEffect(() => {
+    setError(props.error ?? "");
+  }, [props.error]);
 
   useEffect(() => {
     setValue(props.value ?? "");

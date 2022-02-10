@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getAutoCompleteValue, getFormFieldStyles, renderLabel } from "../formFieldHelpers";
 import { ITextFieldProps } from "../formFieldInterfaces";
 import { getValidationMessage } from "../formFieldValidation";
@@ -7,6 +7,12 @@ import FormFieldLabel from "./FormFieldLabel";
 const FormTextField: React.FC<ITextFieldProps> = (props) => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    if (props.errors && typeof props.errors === "function") {
+      props.errors({ id: 1, error: "" });
+    }
+  }, [props.errors, error]);
 
   const fieldStyles = getFormFieldStyles();
 

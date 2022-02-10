@@ -3,11 +3,14 @@ import FormFieldMulti from "../components/FormFieldMulti";
 
 const MountMulti: React.FC = () => {
   return (
-    <div>
+    <form onSubmit={(e) => e.preventDefault()}>
       <FormFieldMulti>
         <TextInput name="test" />
       </FormFieldMulti>
-    </div>
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
