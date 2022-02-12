@@ -4,21 +4,14 @@ import { handleChange, handleInvalid } from "./textInputHelpers";
 interface IProps {
   id?: string;
   name: string;
-  label?: string;
+  label: string;
   value?: string;
   error?: string;
-  errors?: (error: string) => void;
 }
 
 const TextInput: React.FC<IProps> = (props) => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    if (props.errors && typeof props.errors === "function") {
-      props.errors(error);
-    }
-  }, [error]);
 
   useEffect(() => {
     setError(props.error ?? "");
@@ -32,7 +25,7 @@ const TextInput: React.FC<IProps> = (props) => {
 
   return (
     <div className="form__group">
-      {props.label && <label htmlFor={props.name}>{props.label}</label>}
+      {props.label && <label htmlFor={inputId}>{props.label}</label>}
       <input
         required
         type="text"

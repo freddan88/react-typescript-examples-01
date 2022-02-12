@@ -5,7 +5,7 @@ const MountMulti: React.FC = () => {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <FormFieldMulti>
-        <TextInput name="test" />
+        <TextInput name="test" label="test" />
       </FormFieldMulti>
       <br />
       <br />
