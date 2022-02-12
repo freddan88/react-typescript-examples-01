@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { handleChange, handleInvalid } from "./textInputHelpers";
+import TextInputLabel from "./_textInputPartials/TextInputLabel";
 
 interface IProps {
   id?: string;
@@ -23,9 +24,13 @@ const TextInput: React.FC<IProps> = (props) => {
 
   const inputId = props.id ? props.id : props.name;
 
+  const inputProps = {
+    label: () => <TextInputLabel id={inputId} label={props.label} />,
+  };
+
   return (
     <div className="form__group">
-      {props.label && <label htmlFor={inputId}>{props.label}</label>}
+      {props.label && <TextInputLabel id={inputId} label={props.label} />}
       <input
         required
         type="text"
