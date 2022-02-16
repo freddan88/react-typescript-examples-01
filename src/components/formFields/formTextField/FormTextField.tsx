@@ -1,18 +1,27 @@
-import { useEffect, useState } from "react";
-import { getAutoCompleteValue, getFormFieldStyles, renderLabel } from "../formFieldHelpers";
+import { useContext, useEffect, useState } from "react";
+import { FormContext } from "../../../features/contexts";
+import { getAutoCompleteValue, getFormFieldStyles } from "../formFieldHelpers";
 import { ITextFieldProps } from "../formFieldInterfaces";
+import { IAction } from "../formFieldsReducer";
 import { getValidationMessage } from "../formFieldValidation";
 import FormFieldLabel from "./FormFieldLabel";
 
 const FormTextField: React.FC<ITextFieldProps> = (props) => {
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const dispatch = useContext<React.Dispatch<IAction>>(FormContext);
 
   useEffect(() => {
     if (props.errors && typeof props.errors === "function") {
       props.errors({ id: 1, error: "" });
     }
   }, [props.errors, error]);
+
+  useEffect(() => {
+    if (dispatch && typeof dispatch === "function") {
+      dispatch({ name: props.name, value });
+    }
+  }, [value, props.name]);
 
   const fieldStyles = getFormFieldStyles();
 

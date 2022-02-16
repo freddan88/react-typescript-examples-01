@@ -1,3 +1,5 @@
+import { IAction } from "./formFieldsReducer";
+
 interface IBaseProps {
   required?: boolean;
   label?: string;
@@ -6,6 +8,7 @@ interface IBaseProps {
 
 export interface ITextFieldProps extends IBaseProps {
   errors?: (data: { id: number; error: string }) => void;
+  setFormValue?: React.Dispatch<IAction>;
   autocomplete?: boolean;
   minlength?: number;
   maxlength?: number;
