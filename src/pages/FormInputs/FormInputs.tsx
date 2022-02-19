@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TextInput } from "../../components";
@@ -33,6 +34,8 @@ const FormInputs: React.FC<IProps> = (props) => {
     console.log(formValues);
 
     console.table([...formData]);
+
+    axios.post("http://localhost:3000", formData);
   };
 
   const deleteInput = (uuidv4: string) => {
