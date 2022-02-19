@@ -14,6 +14,24 @@ const FormInputs: React.FC<IProps> = (props) => {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
+    const multiData = [];
+    const formState: any = {};
+
+    for (var pair of formData.entries()) {
+      if (pair[0].includes("[]")) {
+        multiData.push(pair[1]);
+      } else {
+        formState[pair[0]] = pair[1];
+      }
+    }
+
+    const formValues = {
+      ...formState,
+      multiValues: multiData,
+    };
+
+    console.log(formValues);
+
     console.table([...formData]);
   };
 
@@ -27,7 +45,7 @@ const FormInputs: React.FC<IProps> = (props) => {
     return inputs.map((uuid) => {
       return (
         <div className="input-container" key={uuid}>
-          <TextInput name="extra" label="Extra" />
+          <TextInput name="extra[]" label="Extra" />
           <button type="button" onClick={() => deleteInput(uuid)}>
             Delete
           </button>
