@@ -8,6 +8,7 @@ import Tutorials from "./components/Tutorials";
 import InputPage from "./pages/InputPage";
 import PanZoom from "./pages/panZoom/PanZoom";
 import LongPress from "./pages/LongPress/LongPress";
+import ZoomRotate from "./pages/zoomRotate/ZoomRotate";
 
 interface IProps {}
 
@@ -28,6 +29,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/draggable" element={<Draggable />} />
           <Route path="/panzoom" element={<PanZoom />} />
           <Route path="/longpress" element={<LongPress />} />
+          <Route path="/zoomrotate" element={<ZoomRotate />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>

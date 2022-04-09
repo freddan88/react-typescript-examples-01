@@ -10,8 +10,6 @@ const LongPress: React.FC<IProps> = (props) => {
     return () => stopCounter();
   }, []);
 
-  console.log(counter);
-
   const containerStyle = {
     height: "300px",
     width: "300px",
