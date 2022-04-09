@@ -1,0 +1,41 @@
+.attachment {
+  display: flex;
+  height: 100vh;
+  width: 1000px;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  background-color: #241e1e;
+  padding-top: 20px;
+}
+
+.outer_container {
+  margin: 0 auto;
+  width: 80%;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+  height: 100%;
+}
+
+.inner_container {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  position: absolute;
+}
+
+.inner_container > img {
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}

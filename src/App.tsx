@@ -6,6 +6,7 @@ import { Header } from "./components";
 import { Contact, Home, FormInputs, MountMulti, Draggable } from "./pages";
 import Tutorials from "./components/Tutorials";
 import InputPage from "./pages/InputPage";
+import PanZoom from "./pages/panZoom/PanZoom";
 
 interface IProps {}
 
@@ -24,6 +25,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/multi" element={<MountMulti />} />
           <Route path="/input" element={<InputPage />} />
           <Route path="/draggable" element={<Draggable />} />
+          <Route path="/panzoom" element={<PanZoom />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>
