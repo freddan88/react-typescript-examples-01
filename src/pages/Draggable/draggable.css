@@ -1,0 +1,33 @@
+.attachment {
+  display: flex;
+  height: 100vh;
+  width: 1000px;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  background-color: #241e1e;
+}
+
+.attachment__container {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  position: absolute;
+  overflow: hidden;
+  width: 600px;
+  cursor: move;
+}
+
+.attachment__container > img {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  display: block;
+  width: 100%;
+}

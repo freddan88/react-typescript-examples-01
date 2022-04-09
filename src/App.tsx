@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { todoReducer } from "./features/reducers/todoReducer";
 import { TodoContext } from "./features/contexts";
 import { Header } from "./components";
-import { Contact, Home, FormInputs, MountMulti } from "./pages";
+import { Contact, Home, FormInputs, MountMulti, Draggable } from "./pages";
 import Tutorials from "./components/Tutorials";
 import InputPage from "./pages/InputPage";
 
@@ -23,6 +23,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/form-inputs" element={<FormInputs />} />
           <Route path="/multi" element={<MountMulti />} />
           <Route path="/input" element={<InputPage />} />
+          <Route path="/draggable" element={<Draggable />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>
