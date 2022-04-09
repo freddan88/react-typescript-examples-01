@@ -52,6 +52,7 @@ const Home: React.FC<IProps> = (props) => {
 
   return (
     <main className="app-home">
+      <button type="button">TEST</button>
       <form onSubmit={addTodo}>
         <label htmlFor="add-todo">Todo: </label>
         <input id="add-todo" type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
