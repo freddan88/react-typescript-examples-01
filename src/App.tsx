@@ -9,6 +9,7 @@ import InputPage from "./pages/InputPage";
 import PanZoom from "./pages/panZoom/PanZoom";
 import LongPress from "./pages/LongPress/LongPress";
 import ZoomRotate from "./pages/zoomRotate/ZoomRotate";
+import PokedexAll from "./pages/pokedex/PokedexAll";
 
 interface IProps {}
 
@@ -30,6 +31,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/panzoom" element={<PanZoom />} />
           <Route path="/longpress" element={<LongPress />} />
           <Route path="/zoomrotate" element={<ZoomRotate />} />
+          <Route path="/pokedex" element={<PokedexAll />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>
