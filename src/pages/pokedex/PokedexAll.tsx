@@ -6,7 +6,7 @@ import "./pokedexStyles.css";
 
 interface IProps {}
 
-const POKEMON_LIMIT = 12;
+const POKEMON_LIMIT = 9;
 const INITIAL_URL = `https://pokeapi.co/api/v2/pokemon?limit=${POKEMON_LIMIT}&offset=0`;
 
 const renderCharacterList = (characters: ICharacterData[]) => {

@@ -1,13 +1,14 @@
 .pokedex-container {
-  max-width: 900px;
+  max-width: 640px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .pokedex-container nav {
-  margin-bottom: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .pokedex-list {
@@ -15,9 +16,9 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   list-style-type: none;
-  padding: 0;
+  padding: 10px;
   margin: 0;
-  gap: 16px;
+  gap: 10px;
 }
 
 .pokedex-list-card {
@@ -26,8 +27,8 @@
   justify-content: space-between;
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
   max-width: 200px;
-  width: 100%;
   padding: 8px;
+  width: 100%;
 }
 
 .pokedex-list-card img {
