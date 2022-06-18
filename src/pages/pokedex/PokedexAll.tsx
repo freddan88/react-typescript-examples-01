@@ -9,12 +9,12 @@ const INITIAL_URL = `https://pokeapi.co/api/v2/pokemon?limit=${POKEMON_LIMIT}&of
 
 const renderCharacterList = (characters: ICharacterData[]) => {
   return characters.map((obj) => (
-    <article key={obj.id} className="pokedex-card">
-      <header>{`#${obj.id}`}</header>
+    <article key={obj.id} data-type={obj.type} className="pokedex-card">
+      <header title="Pokemon ID">{`#${obj.id}`}</header>
       <img src={obj.spite} alt={obj.name} />
       <footer>
-        <p>{obj.name}</p>
-        <span>{obj.type}</span>
+        <p title="Pokemon Name">{obj.name}</p>
+        <span title="Pokemon Type">{obj.type}</span>
       </footer>
     </article>
   ));
@@ -42,11 +42,13 @@ const PokedexAll: FC = () => {
         const responses: ICharactersResponse[] = await Promise.all(characterPromises);
         if (responses.some((obj) => obj.status !== 200)) throw new Error("Error: Could not get information about all characters");
         const characters = responses.map((response) => {
+          const { other, front_default } = response.data.sprites;
+          const image = other.dream_world.front_default ? other.dream_world.front_default : front_default;
           return {
             id: response.data.id,
             name: response.data.name,
             type: response.data.types[0].type.name,
-            spite: response.data.sprites.other.dream_world.front_default,
+            spite: image,
           };
         });
         setCharacters(sortBy(characters, "id"));
