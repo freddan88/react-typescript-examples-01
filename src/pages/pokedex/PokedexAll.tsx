@@ -4,17 +4,16 @@ import { sortBy } from "lodash";
 import { ICharacterData, ICharactersResponse, IPokedexData, IPokedexResponse } from "./PokedexTypes";
 import "./pokedexStyles.css";
 
-const POKEMON_LIMIT = 9;
-const INITIAL_URL = `https://pokeapi.co/api/v2/pokemon?limit=${POKEMON_LIMIT}&offset=0`;
+const INITIAL_URL = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
 
 const renderCharacterList = (characters: ICharacterData[]) => {
   return characters.map((obj) => (
     <article key={obj.id} data-type={obj.type} className="pokedex-card">
-      <header title="Pokemon ID">{`#${obj.id}`}</header>
+      <header title="Pokémon ID">{`#${obj.id}`}</header>
       <img src={obj.spite} alt={obj.name} />
       <footer>
-        <p title="Pokemon Name">{obj.name}</p>
-        <span title="Pokemon Type">{obj.type}</span>
+        <p title="Pokémon Name">{obj.name}</p>
+        <span title="Pokémon Type">{obj.type}</span>
       </footer>
     </article>
   ));
