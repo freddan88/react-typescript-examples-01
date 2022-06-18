@@ -4,8 +4,6 @@ import { sortBy } from "lodash";
 import { ICharacterData, ICharactersResponse, IPokedexData, IPokedexResponse } from "./PokedexTypes";
 import "./pokedexStyles.css";
 
-interface IProps {}
-
 const POKEMON_LIMIT = 9;
 const INITIAL_URL = `https://pokeapi.co/api/v2/pokemon?limit=${POKEMON_LIMIT}&offset=0`;
 
@@ -20,7 +18,7 @@ const renderCharacterList = (characters: ICharacterData[]) => {
   ));
 };
 
-const PokedexAll: FC<IProps> = (props) => {
+const PokedexAll: FC = () => {
   const [pokedex, setPokedex] = useState<IPokedexData>();
   const [currentUrl, setCurrentUrl] = useState(INITIAL_URL);
   const [characters, setCharacters] = useState<ICharacterData[]>();
@@ -37,25 +35,22 @@ const PokedexAll: FC<IProps> = (props) => {
 
   const getCharactersInfo = useCallback(async () => {
     if (pokedex && pokedex.results.length > 0) {
-      const characters: ICharacterData[] = [];
-      pokedex.results.forEach(async (obj) => {
-        try {
-          const response: ICharactersResponse = await axios.get(obj.url);
-          if (response.status !== 200) throw new Error(`Error http-status: ${response.status}`);
-          const character = {
+      const characterPromises = pokedex.results.map((obj) => axios.get(obj.url));
+      try {
+        const responses: ICharactersResponse[] = await Promise.all(characterPromises);
+        if (responses.some((obj) => obj.status !== 200)) throw new Error("Error: Could not get information about all characters");
+        const characters = responses.map((response) => {
+          return {
             id: response.data.id,
             name: response.data.name,
             type: response.data.types[0].type.name,
             spite: response.data.sprites.other.dream_world.front_default,
           };
-          characters.push(character);
-          if (characters.length === POKEMON_LIMIT) {
-            setCharacters(sortBy(characters, "id"));
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      });
+        });
+        setCharacters(sortBy(characters, "id"));
+      } catch (error) {
+        console.error(error);
+      }
     }
   }, [pokedex, setCharacters]);
 
