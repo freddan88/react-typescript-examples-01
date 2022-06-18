@@ -1,5 +1,4 @@
 export interface IPokedexResult {
-  name: string;
   url: string;
 }
 
