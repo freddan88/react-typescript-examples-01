@@ -9,12 +9,14 @@ const INITIAL_URL = `https://pokeapi.co/api/v2/pokemon?limit=${POKEMON_LIMIT}&of
 
 const renderCharacterList = (characters: ICharacterData[]) => {
   return characters.map((obj) => (
-    <li key={obj.id} className="pokedex-list-card">
-      <span>{`#${obj.id}`}</span>
+    <article key={obj.id} className="pokedex-card">
+      <header>{`#${obj.id}`}</header>
       <img src={obj.spite} alt={obj.name} />
-      <p>{obj.name}</p>
-      <span>{obj.type}</span>
-    </li>
+      <footer>
+        <p>{obj.name}</p>
+        <span>{obj.type}</span>
+      </footer>
+    </article>
   ));
 };
 
@@ -81,7 +83,7 @@ const PokedexAll: FC = () => {
           Next
         </button>
       </nav>
-      <ul className="pokedex-list">{characters && renderCharacterList(characters)}</ul>
+      <section className="pokedex-section">{characters && renderCharacterList(characters)}</section>
     </div>
   );
 };
