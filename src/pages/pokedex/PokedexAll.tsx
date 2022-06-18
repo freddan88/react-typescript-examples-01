@@ -58,20 +58,13 @@ const PokedexAll: FC = () => {
   }, [pokedex, setCharacters]);
 
   useEffect(() => {
-    if (pokedex) return;
     getPokedexInfo();
-  }, []);
+  }, [currentUrl]);
 
   useEffect(() => {
     if (!pokedex) return;
     getCharactersInfo();
   }, [pokedex]);
-
-  useEffect(() => {
-    if (pokedex && characters) {
-      getPokedexInfo();
-    }
-  }, [currentUrl]);
 
   return (
     <div className="pokedex-container">
