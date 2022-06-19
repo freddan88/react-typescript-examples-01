@@ -18,7 +18,7 @@ export interface ICharacterData {
   id: number;
   name: string;
   type: string;
-  spite: string;
+  sprite: string;
 }
 
 export interface ICharactersData {
@@ -44,4 +44,9 @@ export interface ICharactersData {
 export interface ICharactersResponse {
   data: ICharactersData;
   status: number;
+}
+
+export interface ISavedCharacter {
+  url: string;
+  data: ICharacterData[];
 }
