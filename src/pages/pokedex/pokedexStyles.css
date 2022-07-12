@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.pokedex-container button {
+  cursor: pointer;
+}
+
 .pokedex-container nav {
   display: flex;
   align-items: center;
