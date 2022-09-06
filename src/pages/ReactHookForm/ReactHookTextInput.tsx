@@ -6,7 +6,7 @@ interface IProps {
   fieldName: string;
   fieldType: FieldTypes;
   formFieldRegistration: UseFormRegisterReturn<any>;
-  fieldDispatch?: (fieldType: FieldTypes, fieldName: string) => void;
+  fieldDispatch?: (fieldType: FieldTypes, fieldValue: any) => void;
 }
 
 const ReactHookTextInput: FC<IProps> = (props) => {
@@ -18,7 +18,12 @@ const ReactHookTextInput: FC<IProps> = (props) => {
       {...formFieldRegistration}
       onChange={(e) => {
         formFieldRegistration.onChange(e);
-        if (fieldDispatch) fieldDispatch(fieldType, fieldName);
+        if (fieldDispatch) {
+          const fieldValue = {
+            [fieldName]: e.target.value,
+          };
+          fieldDispatch(fieldType, fieldValue);
+        }
       }}
     />
   );

@@ -10,18 +10,19 @@ interface IProps {}
 const debouncedDispatch = debounce((fieldValue: any) => console.log(fieldValue), 1000);
 
 const ReactHookForm: React.FC<IProps> = (props) => {
-  const { register, handleSubmit, getValues } = useForm();
+  const { register, handleSubmit, getValues } = useForm({
+    defaultValues: {
+      firstName: "Fredrik",
+    },
+  });
 
   const fieldRegister = register("firstName", { required: true });
 
   const onSubmit = (data: any) => console.log(data);
 
-  const dispatchFieldValue = useCallback((fieldType: FieldTypes, fieldName: string) => {
+  const dispatchFieldValue = useCallback((fieldType: FieldTypes, fieldValue: any) => {
     switch (fieldType) {
       case "text":
-        const fieldValue = {
-          [fieldName]: getValues(fieldName),
-        };
         debouncedDispatch(fieldValue);
         break;
       default:
