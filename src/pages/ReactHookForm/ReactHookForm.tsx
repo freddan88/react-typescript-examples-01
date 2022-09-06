@@ -1,8 +1,13 @@
-import React from "react";
+import { debounce } from "lodash";
+import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import ReactHookTextInput from "./ReactHookTextInput";
 
+export type FieldTypes = "text";
+
 interface IProps {}
+
+const debouncedDispatch = debounce((fieldValue: any) => console.log(fieldValue), 1000);
 
 const ReactHookForm: React.FC<IProps> = (props) => {
   const { register, handleSubmit, getValues } = useForm();
@@ -11,21 +16,22 @@ const ReactHookForm: React.FC<IProps> = (props) => {
 
   const onSubmit = (data: any) => console.log(data);
 
-  const dispatchFieldValue = (fieldType: "text", fieldName: string) => {
+  const dispatchFieldValue = useCallback((fieldType: FieldTypes, fieldName: string) => {
     switch (fieldType) {
       case "text":
-        console.log({
+        const fieldValue = {
           [fieldName]: getValues(fieldName),
-        });
+        };
+        debouncedDispatch(fieldValue);
         break;
       default:
         break;
     }
-  };
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ReactHookTextInput fieldType="text" fieldFormRegistration={fieldRegister} fieldName="firstName" getFieldValues={getValues} fieldDispatch={dispatchFieldValue} />
+      <ReactHookTextInput fieldType="text" fieldName="firstName" formFieldRegistration={fieldRegister} fieldDispatch={dispatchFieldValue} />
     </form>
   );
 };

@@ -1,36 +1,24 @@
-import { FC, useEffect, useState } from "react";
-import { FieldValues, UseFormGetValues, UseFormRegisterReturn } from "react-hook-form";
+import { FC } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldTypes } from "./ReactHookForm";
 
 interface IProps {
-  fieldType: "text";
   fieldName: string;
-  fieldFormRegistration: UseFormRegisterReturn<any>;
-  getFieldValues: UseFormGetValues<FieldValues>;
-  fieldDispatch: (fieldType: "text", fieldValue: string) => void;
+  fieldType: FieldTypes;
+  formFieldRegistration: UseFormRegisterReturn<any>;
+  fieldDispatch?: (fieldType: FieldTypes, fieldName: string) => void;
 }
 
 const ReactHookTextInput: FC<IProps> = (props) => {
-  const { fieldType, fieldName, fieldFormRegistration, getFieldValues, fieldDispatch } = props;
-  const [fieldValue, setFieldValue] = useState(getFieldValues(fieldName));
-
-  useEffect(() => {
-    const debouncedTimer = setTimeout(() => {
-      fieldDispatch(fieldType, fieldName);
-    }, 1000);
-    return () => {
-      clearTimeout(debouncedTimer);
-      console.log("Cleared Timer");
-    };
-  }, [fieldValue]);
+  const { fieldType, fieldName, formFieldRegistration, fieldDispatch } = props;
 
   return (
     <input
       type={props.fieldType}
-      {...fieldFormRegistration}
+      {...formFieldRegistration}
       onChange={(e) => {
-        fieldFormRegistration.onChange(e);
-        setFieldValue(e.target.value);
-        // fieldDispatch(fieldType, fieldName);
+        formFieldRegistration.onChange(e);
+        if (fieldDispatch) fieldDispatch(fieldType, fieldName);
       }}
     />
   );
