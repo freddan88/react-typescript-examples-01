@@ -10,13 +10,15 @@ interface IProps {}
 const debouncedDispatch = debounce((fieldValue: any) => console.log(fieldValue), 1000);
 
 const ReactHookForm: React.FC<IProps> = (props) => {
-  const { register, handleSubmit, getValues } = useForm({
+  const { register, handleSubmit, getValues, formState, watch } = useForm({
     defaultValues: {
       firstName: "Fredrik",
+      lastName: "",
     },
   });
 
-  const fieldRegister = register("firstName", { required: true });
+  const fieldRegisterFistName = register("firstName", { required: true });
+  const fieldRegisterLastName = register("lastName", { required: true });
 
   const onSubmit = (data: any) => console.log(data);
 
@@ -32,7 +34,10 @@ const ReactHookForm: React.FC<IProps> = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ReactHookTextInput fieldType="text" fieldName="firstName" formFieldRegistration={fieldRegister} fieldDispatch={dispatchFieldValue} />
+      <ReactHookTextInput fieldType="text" fieldName="firstName" formFieldRegistration={fieldRegisterFistName} fieldDispatch={dispatchFieldValue} />
+      <br />
+      <br />
+      <ReactHookTextInput fieldType="text" fieldName="lastName" formFieldRegistration={fieldRegisterLastName} fieldDispatch={dispatchFieldValue} />
     </form>
   );
 };
