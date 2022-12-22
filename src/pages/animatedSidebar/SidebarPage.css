@@ -1,0 +1,35 @@
+.page-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.sidebar-layout {
+  display: flex;
+  background-color: #d1d1d1;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  width: 1200px;
+  border: 10px solid #fafafa;
+  height: 80vh;
+}
+
+aside {
+  min-width: 30px;
+  background-color: rgb(52, 71, 52);
+  transition: min-width 250ms ease-in-out;
+  /* margin-right: 30px; */
+  /* margin-right: calc(300px - 30px); */
+}
+
+aside:hover {
+  min-width: 300px;
+  /* margin-right: 30px; */
+}
+
+main {
+  flex: 1;
+}

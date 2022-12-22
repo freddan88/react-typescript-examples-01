@@ -11,6 +11,7 @@ import LongPress from "./pages/LongPress/LongPress";
 import ZoomRotate from "./pages/zoomRotate/ZoomRotate";
 import PokedexAll from "./pages/pokedex/PokedexAll";
 import ReactHookForm from "./pages/ReactHookForm/ReactHookForm";
+import SidebarPage from "./pages/animatedSidebar/SidebarPage";
 
 interface IProps {}
 
@@ -34,6 +35,7 @@ const App: React.FC<IProps> = (props) => {
           <Route path="/zoomrotate" element={<ZoomRotate />} />
           <Route path="/pokedex" element={<PokedexAll />} />
           <Route path="/react-hook-form" element={<ReactHookForm />} />
+          <Route path="/animated-sidebar" element={<SidebarPage />} />
         </Routes>
       </BrowserRouter>
     </TodoContext.Provider>
